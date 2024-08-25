@@ -1,0 +1,453 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f39c12;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    margin: 0 15px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar .nav-links a:hover {
+    color: #f39c12;
+}
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.menu-box {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px; 
+    height: 100%;
+    background-color: #333; 
+    z-index: 1000; 
+    transform: translateX(100%); 
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+    padding-top: 60px;
+    opacity: 0; 
+}
+
+.menu-box.active {
+    display: block; 
+    transform: translateX(0);
+    opacity: 1; 
+}
+
+/* Style for the menu close icon */
+.menu-close {
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    color: white;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1100;
+    opacity: 0; 
+}
+
+.menu-close.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Animated Text Styles */
+.animated-text-container {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.animated-text {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadeInOut 2s ease forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(20px);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    30% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(-20px);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.animated-text:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.animated-text:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.animated-text:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.animated-text:nth-child(4) {
+    animation-delay: 6s;
+}
+
+.animated-text:nth-child(5) {
+    animation-delay: 8s;
+}
+
+.animated-text:nth-child(6) {
+    animation-delay: 10s;
+}
+
+.animated-text:nth-child(7) {
+    animation-delay: 12s;
+}
+
+/* Show Hero */
+.hero-content {
+    opacity: 0;
+    transition: opacity 1s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-content.show-hero {
+    opacity: 1;
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #ff5733;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #c70039;
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 2rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f39c12;
+}
+
+/* About Section */
+.about-section {
+    padding: 100px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.importance-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.importance-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.importance-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.importance-box:hover {
+    transform: translateY(-10px);
+}
+
+.importance-box img.importance-icon {
+    width: 170px; 
+    height: 100px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+}
+
+.importance-box h4 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Impact Sections Toggle */
+.impact-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    cursor: pointer;
+}
+
+.arrow-down,
+.arrow-up {
+    font-size: 2rem;
+    display: none;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+
+.arrow-down {
+    display: block;
+}
+
+.impact-sections {
+    display: none;
+}
+
+.impact-container {
+    margin-top: 20px;
+}
+
+.impact-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.impact-box:hover {
+    transform: translateY(-10px);
+}
+
+.impact-box h3 {
+    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 6px 0;
+    text-align: center;
+}
+
+.footer p {
+    margin: 2px 0;
+    font-size: 11px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        flex-direction: column;
+        width: 200px;
+        background: #333;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        transform: translateX(100%);
+        padding-top: 60px; 
+    }
+
+    .navbar .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .navbar .nav-links li {
+        margin: 1rem 0;
+        opacity: 1;
+    }
+
+    .nav-links li a {
+        font-size: 18px !important;
+        margin-left: 40px;
+        padding-top: 20px;
+    }
+
+    .navbar .menu-toggle {
+        display: block;
+    }
+
+    .menu-box {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 250px; 
+        height: 100%;
+        background-color: #333; 
+        z-index: 1000; 
+        transform: translateX(100%); 
+        transition: transform 0.3s ease; 
+    }
+
+    .menu-box.active {
+        transform: translateX(0);
+    }
+
+    .menu-close {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .animated-text {
+        font-size: 28px !important;
+    }
+}
